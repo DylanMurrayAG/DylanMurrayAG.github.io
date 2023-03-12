@@ -46,12 +46,25 @@
             cursor: pointer;
         }
 
-        .embeddedServiceHelpButton .helpButton .uiButton {
+        /*.embeddedServiceHelpButton .helpButton .uiButton {
             background-color: #E5173F;
             font-family: "Salesforce Sans", sans-serif;
         }
         .embeddedServiceHelpButton .helpButton .uiButton:focus {
             outline: 1px solid #D0D6DA;
+        }*/
+        // help button
+        .embeddedServiceHelpButton { display: block; position: fixed; top: 0; left: 0; background: transparent; box-shadow: none; overflow: visible; z-index: 999; font-family: sans-serif; }
+        .embeddedServiceHelpButton .helpButton { position: fixed; bottom: 12px; right: 12px; height: 65px; -webkit-font-smoothing: subpixel-antialiased;}
+        .embeddedServiceHelpButton .helpButton .uiButton { background-color: #E5173F; font-family: 'Open Sans', sans-serif; font-style: normal; font-weight: 700; font-size: 15.6565px; line-height: 21px; text-align: center; letter-spacing: 0.02em; height: 65px; width: 220px; }
+        .embeddedServiceHelpButton .embeddedServiceIcon {}
+        .embeddedServiceHelpButton .uiButton .helpButtonLabel {}
+        .embeddedServiceHelpButton .assistiveText {}
+        .embeddedServiceHelpButton .uiButton .helpButtonLabel .message {}
+
+        @media only screen and (min-width: 48em) {
+        .embeddedServiceHelpButton { background-color: transparent; }
+        .embeddedServiceHelpButton .helpButton, .embeddedServiceHelpButton.embeddedServiceBottomTabBar .helpButton { position: fixed; bottom: 0; }
         }
         @font-face {
             font-family: 'Salesforce Sans';
