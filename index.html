@@ -105,11 +105,17 @@
 
 .embeddedServiceLiveAgentStateChatPlaintextMessageDefaultUI.chasitor.plaintextContent { color: var(--lwc-colorTextInverse,rgb(255, 255, 255)); margin-left: auto; margin-right: 50px; background: none !important; }
 
-
-
 .embeddedServiceLiveAgentStateChatItem .isLightningOutContext .avatar.chasitor { margin: 0 0 14px 14px !important; } // needs a .user object adding, similar to agent chat circle but on the user side
 
+.embeddedServiceLiveAgentStateChatInputFooter .footerMenuWrapper { display: none; }
 
+.embeddedServiceLiveAgentStateChatInputFooter.chasitorInputWrapper { position: relative; width: 100%; height: auto; border-radius: 0 0 8px 8px; box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1); }
+
+button[embeddedService-chatHeader_chatHeader] { background: none; border: none; height: 32px; min-height: 32px; width: 32px; min-width: 32px; align-self: center; }
+
+.embeddedServiceLiveAgentStateChatInputFooter .chasitorText { ont-family: var(--lwc-fontFamily,"Open Sans"),sans-serif; color: var(--lwc-colorTextDefault,#333333); }
+
+.dockableContainer.showDockableContainer { width: var(--lwc-sidebarWidth,334px) !important; position: fixed !important; left: unset !important; right: 20px !important; }
         /** Pixel code end **/
         
         @font-face {
