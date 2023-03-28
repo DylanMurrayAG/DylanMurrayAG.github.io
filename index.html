@@ -6,6 +6,7 @@
 <body>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <div><p>Something on the page</p></div>
+    <div><input type="button" class="button" onClick="openChat();" value="Open Chat Window" /></div>
 
     <style type='text/css'>
          /* The Modal (background) */
@@ -251,7 +252,12 @@ h2[embeddedService-chatHeader_chatHeader] { font-weight: 700; margin: 0 0 0 8px 
     <script>
         window.addEventListener("load", function () {
             setTimeout(addOfflineOnClickEvent, 5000);
-         }, false);
+         }, false);       
+
+        function openChat() {
+            var button = document.querySelector("#helpButtonSpan > span.message");
+            button.click();
+        }
 
         function addOfflineOnClickEvent(){
             var parentButtonElement = document.getElementById("helpButtonSpan");
