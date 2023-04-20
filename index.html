@@ -154,6 +154,7 @@ h2[embeddedService-chatHeader_chatHeader] { font-weight: 700; margin: 0 0 0 8px 
     </style>
     <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
     <script type='text/javascript'>
+	    /* required Salesforce config */
         var initESW = function(gslbBaseURL) {
             embedded_svc.settings.displayHelpButton = true; //Or false
             embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -195,6 +196,46 @@ h2[embeddedService-chatHeader_chatHeader] { font-weight: 700; margin: 0 0 0 8px 
         } else {
             initESW('https://service.force.com');
 	}
+	    /*end of Salesforce config*/
+	    
+	 window.addEventListener("load", function () {
+	    setTimeout(addOfflineOnClickEvent, 3000);
+         }, false);       
+
+        function openChat() {
+            var button = document.querySelector("#helpButtonSpan > span.message");
+            button.click();
+        }
+
+        function addOfflineOnClickEvent(){
+            var parentButtonElement = document.getElementById("helpButtonSpan");
+            var buttonTopLevelParent = parentButtonElement.closest('button.helpButtonDisabled');
+            console.log(buttonTopLevelParent);
+            var buttonTextChildNode = null;
+            for (var i = 0; i < parentButtonElement.childNodes.length; i++) {
+                if (parentButtonElement.childNodes[i].className == "message") {
+                    buttonTextChildNode = parentButtonElement.childNodes[i];
+                    break;
+                }        
+            }
+            if(buttonTextChildNode.innerHTML === 'Contact Us'){
+                buttonTopLevelParent.style.cursor = 'pointer';
+                parentButtonElement.onclick = function() { webToLeadPop(); };
+
+            }
+        }
+
+        function webToLeadPop()
+        {
+            document.getElementById('leadModal').style.display = "block";
+            document.getElementById("webToLead").style.display = "block";
+        }
+
+        function closePopUp()
+        {
+            document.getElementById("webToLead").style.display = "none";
+            document.getElementById('leadModal').style.display = "none";
+        }
     </script>
     <div id="leadModal" class="modal ">
         <div id="webToLead" class="modal-content">
@@ -240,45 +281,5 @@ h2[embeddedService-chatHeader_chatHeader] { font-weight: 700; margin: 0 0 0 8px 
                 </form>
         </div>
     </div>
-    <script>
-        window.addEventListener("load", function () {
-            setTimeout(addOfflineOnClickEvent, 3000);
-         }, false);       
-
-        function openChat() {
-            var button = document.querySelector("#helpButtonSpan > span.message");
-            button.click();
-        }
-
-        function addOfflineOnClickEvent(){
-            var parentButtonElement = document.getElementById("helpButtonSpan");
-            var buttonTopLevelParent = parentButtonElement.closest('button.helpButtonDisabled');
-            console.log(buttonTopLevelParent);
-            var buttonTextChildNode = null;
-            for (var i = 0; i < parentButtonElement.childNodes.length; i++) {
-                if (parentButtonElement.childNodes[i].className == "message") {
-                    buttonTextChildNode = parentButtonElement.childNodes[i];
-                    break;
-                }        
-            }
-            if(buttonTextChildNode.innerHTML === 'Contact Us'){
-                buttonTopLevelParent.style.cursor = 'pointer';
-                parentButtonElement.onclick = function() { webToLeadPop(); };
-
-            }
-        }
-
-        function webToLeadPop()
-        {
-            document.getElementById('leadModal').style.display = "block";
-            document.getElementById("webToLead").style.display = "block";
-        }
-
-        function closePopUp()
-        {
-            document.getElementById("webToLead").style.display = "none";
-            document.getElementById('leadModal').style.display = "none";
-        }
-    </script>
 </body>
 </html>
